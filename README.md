@@ -14,20 +14,18 @@
 
 ##使用方法
 
->例如：在 A: http://xx.cn/xxx/index.html 域名下获得微信用户的信息
+例如：在 A: http://xx.cn/xxx/index.html 域名下获得微信用户的信息
 
 - 拼接 url 获得code 
 
 	http://wx.wbh5.com/auth/?url=
   这里url 后面的地址 就是 上面的 A 地址 经过 encodeURIComponent 后，如下：
 
-	http://wx.wbh5.com/auth/?url=http%3A%2F%2Fxx.cn%2Fxxx%2Findex.html
-
-然后访问这个链接，在微信浏览器中打开，就会到授权页面
+	http://wx.wbh5.com/auth/?url=http%3A%2F%2Fxx.cn%2Fxxx%2Findex.html然后访问这个链接，在微信浏览器中打开，就会到授权页面
 
 - A: 域名拿到 code 之后 请求用户数据
 
-  接口地址： http://api.wbh5.com/cross/wxusers?callback=?  方式： GET
+    接口地址： http://api.wbh5.com/cross/wxusers?callback=?  方式： GET
 
 ```
 
