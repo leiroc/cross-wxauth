@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>授权接口测试</title>
+    <meta name="description" content="授权接口测试">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+
+    <script src="zepto.min.js"></script>
+    <script src="tool.js"></script>
+</head>
+<body>
+
+<script>
+    $(function () {
+        var code = getQueryString('code');
+
+        if (code) {
+            Ajax({
+                type: 'get',
+                url: 'http://api.wbh5.com/cross/wxusers?callback=?',
+                data: {code: code}
+            }, function (data) {
+                alert(JSON.stringify(data));
+            })
+        }
+
+        function Ajax(obj, okcb, failcb) {
+            $.ajax({
+                type: obj.type,
+                url: obj.url,
+                data: obj.data || {},
+                dataType:'json',
+                success: function(res) {
+                    okcb && okcb(res);
+                },
+                error: function(err) {
+                    if (failcb) {
+                        failcb(err)
+                    } else {
+                        alert('网络延时，请刷新试试！');
+                    }
+                }
+            });
+        }
+    })
+
+</script>
+
+</body>
+</html>
